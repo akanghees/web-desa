@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Tag extends Model
+{
+    protected $table = 'tags';
+
+    protected $fillable = [
+        'nama_tag',
+        'slug',
+    ];
+
+    public function berita()
+    {
+        return $this->belongsToMany(
+            Berita::class,
+            'berita_tag',
+            'tag_id',
+            'berita_id'
+        )->withTimestamps();
+    }
+}
