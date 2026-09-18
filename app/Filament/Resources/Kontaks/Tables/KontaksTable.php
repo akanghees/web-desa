@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Beritas\Tables;
+namespace App\Filament\Resources\Kontaks\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -8,23 +8,23 @@ use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class BeritasTable
+class KontaksTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('kategori_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('judul')
+                TextColumn::make('no_telepon')
                     ->searchable(),
-                TextColumn::make('slug')
+                TextColumn::make('email')
+                    ->label('Email address')
                     ->searchable(),
-                TextColumn::make('gambar')
+                TextColumn::make('facebook')
                     ->searchable(),
-                TextColumn::make('status')
-                    ->badge(),
+                TextColumn::make('instagram')
+                    ->searchable(),
+                TextColumn::make('youtube')
+                    ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

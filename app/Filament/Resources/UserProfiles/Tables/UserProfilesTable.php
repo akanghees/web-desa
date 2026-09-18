@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Beritas\Tables;
+namespace App\Filament\Resources\UserProfiles\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -8,23 +8,28 @@ use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class BeritasTable
+class UserProfilesTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('kategori_id')
+                TextColumn::make('user_id')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('judul')
+                TextColumn::make('nik')
                     ->searchable(),
-                TextColumn::make('slug')
-                    ->searchable(),
-                TextColumn::make('gambar')
-                    ->searchable(),
-                TextColumn::make('status')
+                TextColumn::make('jenis_kelamin')
                     ->badge(),
+                TextColumn::make('tempat_lahir')
+                    ->searchable(),
+                TextColumn::make('tanggal_lahir')
+                    ->date()
+                    ->sortable(),
+                TextColumn::make('no_hp')
+                    ->searchable(),
+                TextColumn::make('foto')
+                    ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

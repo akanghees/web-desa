@@ -22,7 +22,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',
         'avatar',
         'is_active',
         'last_login',
@@ -71,5 +70,17 @@ class User extends Authenticatable
     public function permohonanSurat()
     {
         return $this->hasMany(PermohonanSurat::class);
+    }
+
+    public function hasRole(string $slug): bool
+    {
+        return $this->roles()->where('slug', $slug)->exists();
+    }
+
+    public function hasPermission(string $slug): bool
+    {
+        return $this->roles()
+            ->whereHas('permissions', fn ($q) => $q->where('slug', $slug))
+            ->exists();
     }
 }

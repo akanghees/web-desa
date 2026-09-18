@@ -1,34 +1,32 @@
 <?php
 
-namespace App\Filament\Resources\Beritas\Schemas;
+namespace App\Filament\Resources\Pengumumen\Schemas;
 
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 
-class BeritaForm
+class PengumumanForm
 {
     public static function configure(Schema $schema): Schema
     {
         return $schema
             ->components([
-                TextInput::make('kategori_id')
-                    ->required()
-                    ->numeric(),
                 TextInput::make('judul')
-                    ->required(),
-                TextInput::make('slug')
                     ->required(),
                 Textarea::make('isi')
                     ->default(null)
                     ->columnSpanFull(),
+                DatePicker::make('tanggal_mulai'),
+                DatePicker::make('tanggal_selesai'),
+                Select::make('status')
+                    ->options(['aktif' => 'Aktif', 'nonaktif' => 'Nonaktif'])
+                    ->default('aktif')
+                    ->required(),
                 TextInput::make('gambar')
                     ->default(null),
-                Select::make('status')
-                    ->options(['draft' => 'Draft', 'publish' => 'Publish'])
-                    ->default('draft')
-                    ->required(),
             ]);
     }
 }

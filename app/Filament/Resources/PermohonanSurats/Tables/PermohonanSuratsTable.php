@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Beritas\Tables;
+namespace App\Filament\Resources\PermohonanSurats\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -8,20 +8,23 @@ use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class BeritasTable
+class PermohonanSuratsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('kategori_id')
+                TextColumn::make('layanan_id')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('judul')
+                TextColumn::make('user_id')
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('nama_pemohon')
                     ->searchable(),
-                TextColumn::make('slug')
+                TextColumn::make('nik')
                     ->searchable(),
-                TextColumn::make('gambar')
+                TextColumn::make('file_persyaratan')
                     ->searchable(),
                 TextColumn::make('status')
                     ->badge(),
